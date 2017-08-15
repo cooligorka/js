@@ -1,5 +1,3 @@
-
-
 var n;
 var array = [],
 	firstEl = 0,
@@ -18,12 +16,6 @@ function addNumbers(n) {
 		}
 }
 
-function exchange(array, i, j) {
-    var x = array[i];
-    array[i] = array[j];
-    array[j] = x;
-}
-
 function sortArray(array, firstEl, lastEl) {
     var i = firstEl;
     var j = lastEl;
@@ -36,7 +28,9 @@ function sortArray(array, firstEl, lastEl) {
             --j;
         }
         if (i <= j) {
-            exchange(array, i, j);
+            var x = array[i];
+            array[i] = array[j];
+            array[j] = x;
             i++;
             j--;
         }
