@@ -1,56 +1,54 @@
-
-
 var n;
 var array = [],
-	firstEl = 0,
-	lastEl = array.length - 1;
+	startMarker = 0,
+	endMarker = array.length - 1;
 
 function addNumbers(n) {
-	var q = Number( prompt('Сколько элементов будет в массиве?' , ''));
-	if (q > 1 && q !== 0){			
+	var q = Number(prompt('Сколько элементов будет в массиве?', ''));
+	if (q > 1 && q !== 0) {
 		for (i = 0; i < q; ++i) {
-		n = Number( prompt('Укажите числа для сортировки' , ''));
-		array.push(n);
+			n = Number(prompt('Укажите числа для сортировки', ''));
+			array.push(n);
 		}
 	} else {
 		alert('Укажите число, большее 1!');
 		brake;
+	}
+};
+
+function quickSort(array, startMarker, endMarker) {
+	var start = startMarker;
+	var end = endMarker;
+	var middle = array[Math.round((startMarker + endMarker) / 2)];
+	do {
+		while (array[start] < middle) {
+			++start;
 		}
-}
+		while (array[end] > middle) {
+			--end;
+		}
+		if (start <= end) {
+			exchange(array, start, end);
+			start++;
+			end--;
+		}
+	}
+	while (start < end);
+	if (startMarker < end) {
+		quickSort(array, startMarker, end);
+	}
+	if (start < endMarker) {
+		quickSort(array, start, endMarker);
+	}
+};
 
-function exchange(array, i, j) {
-    var x = array[i];
-    array[i] = array[j];
-    array[j] = x;
-}
+function exchange(array, start, end) {
+	var tmp = array[start];
+	array[start] = array[end];
+	array[end] = tmp;
+};
 
-function sortArray(array, firstEl, lastEl) {
-    var i = firstEl;
-    var j = lastEl;
-    var middle = array[Math.round((firstEl + lastEl) / 2)];
-    do {
-        while (array[i] < middle) {
-            ++i;
-        }
-        while (array[j] > middle) {
-            --j;
-        }
-        if (i <= j) {
-            exchange(array, i, j);
-            i++;
-            j--;
-        }
-    }
-	while (i < j);
-    if (firstEl < j) {
-        sortArray(array, firstEl, j);
-    }
-    if (i < lastEl) {
-        sortArray(array, i, lastEl);
-    }
-}
-
-addNumbers();
-sortArray(array, 0, array.length - 1);
+//addNumbers();
+quickSort(array, 0, array.length - 1);
 alert(array);
-console.log(array);
+//console.log(array);
