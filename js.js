@@ -19,21 +19,20 @@ function addNumbers(n) {
 function quickSort(array, startMarker, endMarker) {
 	var start = startMarker;
 	var end = endMarker;
-	var middle = array[Math.round((startMarker + endMarker) / 2)];
+	var middle = array[Math.round((start + end) / 2)];
 	do {
 		while (array[start] < middle) {
-			++start;
+			start++;
 		}
 		while (array[end] > middle) {
-			--end;
+			end--;
 		}
 		if (start <= end) {
-			exchange(array, start, end);
+			Exchange(array, start, end);
 			start++;
 			end--;
 		}
-	}
-	while (start < end);
+	} while (start <= end);
 	if (startMarker < end) {
 		quickSort(array, startMarker, end);
 	}
@@ -42,13 +41,12 @@ function quickSort(array, startMarker, endMarker) {
 	}
 };
 
-function exchange(array, start, end) {
+function Exchange(array, start, end) {
 	var tmp = array[start];
 	array[start] = array[end];
 	array[end] = tmp;
 };
 
-//addNumbers();
+addNumbers();
 quickSort(array, 0, array.length - 1);
 alert(array);
-//console.log(array);
