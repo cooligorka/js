@@ -1,4 +1,4 @@
-var	array = [-3, 5, 38, -445, 64, 939],
+var array = [-3, 5, 38, -445, 64, 939],
 	startMarker = 0,
 	endMarker = array.length - 1;
 
@@ -9,9 +9,9 @@ function Exchange(array, start, end) {
 };
 
 function quickSort(array, startMarker, endMarker) {
-	var start = startMarker;
-	var end = endMarker;
-	var middle = array[Math.round((start + end) / 2)];
+	var start = startMarker,
+		end = endMarker,
+		middle = array[Math.round((start + end) / 2)];
 	do {
 		while (array[start] < middle) {
 			start++;
