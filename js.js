@@ -1,19 +1,11 @@
-var n;
-var array = [],
+var	array = [-3, 5, 38, -445, 64, 939],
 	startMarker = 0,
 	endMarker = array.length - 1;
 
-function addNumbers(n) {
-	var q = Number(prompt('Сколько элементов будет в массиве?', ''));
-	if (q > 1 && q !== 0) {
-		for (i = 0; i < q; ++i) {
-			n = Number(prompt('Укажите числа для сортировки', ''));
-			array.push(n);
-		}
-	} else {
-		alert('Укажите число, большее 1!');
-		brake;
-	}
+function Exchange(array, start, end) {
+	var tmp = array[start];
+	array[start] = array[end];
+	array[end] = tmp;
 };
 
 function quickSort(array, startMarker, endMarker) {
@@ -41,12 +33,5 @@ function quickSort(array, startMarker, endMarker) {
 	}
 };
 
-function Exchange(array, start, end) {
-	var tmp = array[start];
-	array[start] = array[end];
-	array[end] = tmp;
-};
-
-addNumbers();
 quickSort(array, 0, array.length - 1);
 alert(array);
